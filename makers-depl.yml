@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: profiles-depl
+  name: makers-depl
 spec:
   replicas: 1
   selector:
     matchLabels: 
-      app: profileservice
+      app: makerservice
   template:
     metadata:
       labels:
-        app: profileservice
+        app: makerservice
     spec:
       containers:
-        - name: profileservice
-          image: nathanouriach/profileservice:latest
+        - name: makerservice
+          image: nathanouriach/makerservice:latest
