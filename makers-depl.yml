@@ -15,3 +15,17 @@ spec:
       containers:
         - name: makerservice
           image: nathanouriach/makerservice:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: makers-clusterip-service
+spec:
+  type: ClusterIP
+  selector:
+    app: makerservice
+  ports:
+    - name: makerservice
+      protocol: TCP
+      port: 80
+      targetPort: 80
