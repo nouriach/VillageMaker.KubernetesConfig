@@ -1,31 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: makers-depl
+  name: products-depl
 spec:
   replicas: 1
   selector:
     matchLabels: 
-      app: makerservice
+      app: productservice
   template:
     metadata:
       labels:
-        app: makerservice
+        app: productservice
     spec:
       containers:
-        - name: makerservice
-          image: nathanouriach/makerservice:latest
+        - name: productservice
+          image: nathanouriach/productservice:latest
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: makers-clusterip-service
+  name: products-clusterip-service
 spec:
   type: ClusterIP
   selector:
-    app: makerservice
+    app: productservice
   ports:
-    - name: makerservice
+    - name: productservice
       protocol: TCP
       port: 80
       targetPort: 80
