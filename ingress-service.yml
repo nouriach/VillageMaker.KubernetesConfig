@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata: 
+  name: ingress-service
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: 'true'
+spec:
+  rules:
+    - host: earlsbartonmakers.com
+      http:
+        paths: 
+          - path: /api/v1/makers
+            pathType: Prefix
+            backend:
+              service:
+                name: makers-clusterip-service
+                port:
+                  number: 80
+          - path: /api/v1/p/makers
+            pathType: Prefix
+            backend:
+              service:
+                name: products-clusterip-service
+                port:
+                  number: 80
