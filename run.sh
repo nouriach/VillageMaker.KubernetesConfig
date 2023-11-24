@@ -1,5 +1,8 @@
 echo "---About to load kubernetes deployments"
 kubectl apply -f makers-depl.yml
+kubectl apply -f mssql-makers-depl.yml
+kubectl apply -f products-depl.yml
+kubectl apply -f rabbitmq-depl.yml
 echo "---Finished loading deployments"
 echo "---About to load kubernetes services"
 kubectl apply -f makers-nodeport-service.yml
